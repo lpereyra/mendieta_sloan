@@ -1,7 +1,11 @@
 ### snapshot options #######
 EXTRAS += -DPRINT_XYZ
 #EXTRAS += -DLIM_VOL
+<<<<<<< HEAD
 #EXTRAS += -DLEN_FOF_MERCHAN
+=======
+EXTRAS += -DLEN_FOF_MERCHAN
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
 
 #CC
 CC     := $(OMPP) gcc $(DOMPP)

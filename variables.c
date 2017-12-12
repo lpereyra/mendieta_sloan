@@ -91,9 +91,15 @@ void init_variables(int argc, char **argv){
   #endif
   BLUE("************* LEN FOF ************\n");
   #ifdef LEN_FOF_MERCHAN
+<<<<<<< HEAD
   GREEN("\nUsa LEN FOF MERCHAN\n\n");
   #else
   GREEN("\nUsa LEN FOF APROX VOL\n\n");
+=======
+  GREEN("Usa LEN FOF MERCHAN");
+  #else
+  GREEN("Usa LEN FOF APROX VOL");
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
   #endif
   BLUE("**********************************\n");
 

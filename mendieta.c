@@ -12,6 +12,7 @@
 #include "colores.h"
 #include "grid.h"
 
+<<<<<<< HEAD
 #define CVEL  299792.458
 #define GCONST 6.6726E-11 /*M³s¯²kg¯¹*/
 #define VUNIT 1000.
@@ -20,6 +21,8 @@
 
 double mediana(double *x, int n, int n2);
 int fsort(const void *a, const void *b);
+=======
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
 void Write_Groups(double *fof);
 void Write_Sloan(double *fof);
 
@@ -93,6 +96,7 @@ void Write_Groups(double *fof)
   char filename[200];
   FILE *pfout, *pfcentros, *pfcentros_ascii;
 
+<<<<<<< HEAD
   FILE *pfgrupos;
   int   indmagmax;
   double *alfag, *deltag, *velg, *alfagx, *deltagx, *velgx;
@@ -106,6 +110,8 @@ void Write_Groups(double *fof)
   double sigmaerr=30.0;
   double sqrtpi = sqrt(M_PI);
 
+=======
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
   //////////////////////////////////////////////////////
   if(iden.step!=0)
   {
@@ -133,6 +139,7 @@ void Write_Groups(double *fof)
     #endif
     pfcentros_ascii=fopen(filename,"w");
 
+<<<<<<< HEAD
     #ifdef LIM_VOL
       sprintf(filename,"%.2f_%.2f_%.2f_grupos.dat",zcut,fof[1],fof[0]);
     #else
@@ -140,6 +147,8 @@ void Write_Groups(double *fof)
     #endif
     pfgrupos=fopen(filename,"w");
 
+=======
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
   }else{
     #ifdef LIM_VOL
       sprintf(filename,"%.2f_%.2f_%.2f_fof.bin",zcut,fof[0],fof[1]);
@@ -149,7 +158,11 @@ void Write_Groups(double *fof)
     pfout=fopen(filename,"w");
     i = iden.ngrupos-1;
     fwrite(&i,sizeof(int),1,pfout);
+<<<<<<< HEAD
   }
+=======
+ }
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
   //////////////////////////////////////////////////////
 
   npar = gn = 0;
@@ -161,6 +174,7 @@ void Write_Groups(double *fof)
     id = k = Temp.head[i];
     if(iden.step!=0)
     {
+<<<<<<< HEAD
 
       alfag   = (double *) malloc(Temp.npgrup[i]*sizeof(double));
       deltag  = (double *) malloc(Temp.npgrup[i]*sizeof(double));
@@ -175,6 +189,11 @@ void Write_Groups(double *fof)
       save_sub = P[k].sub;
       fwrite(&save_sub,sizeof(int),1,pfout);
 
+=======
+      xc = yc = zc = 0.0;
+      save_sub = P[k].sub;
+      fwrite(&save_sub,sizeof(int),1,pfout);
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
     }
     fwrite(&i,sizeof(int),1,pfout);
     fwrite(&Temp.npgrup[i],sizeof(int),1,pfout);
@@ -183,6 +202,7 @@ void Write_Groups(double *fof)
     {
       if(iden.step!=0)
       {
+<<<<<<< HEAD
 
         alfag[j]  = gal[k].alfa           ;
         deltag[j] = gal[k].delta          ;
@@ -196,6 +216,9 @@ void Write_Groups(double *fof)
         }
 
         //// cuidado con el orden {pos[i]-centro} en este caso
+=======
+        // cuidado con el orden {pos[i]-centro} en este caso
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
         dx = P[k].Pos[0] - P[id].Pos[0];
         dy = P[k].Pos[1] - P[id].Pos[1];
         dz = P[k].Pos[2] - P[id].Pos[2];
@@ -213,12 +236,17 @@ void Write_Groups(double *fof)
         xc += dx;
         yc += dy;
         zc += dz;
+<<<<<<< HEAD
 
 
       }else{  
 
         P[k].sub = P[k].gr;
 
+=======
+      }else{   
+        P[k].sub = P[k].gr;
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
       }
       //fwrite(&P[k].id,sizeof(int),1,pfout);
       fwrite(&k,sizeof(int),1,pfout);
@@ -257,6 +285,7 @@ void Write_Groups(double *fof)
       fwrite(&zc,sizeof(float),1,pfcentros);
       fwrite(&Temp.npgrup[i],sizeof(int),1,pfcentros);
       fprintf(pfcentros_ascii,"%d %d %f %f %f %d\n",save_sub,i,xc,yc,zc,Temp.npgrup[i]);
+<<<<<<< HEAD
       
       qsort(alfag,Temp.npgrup[i],sizeof(double),fsort);
       qsort(deltag,Temp.npgrup[i],sizeof(double),fsort);
@@ -421,6 +450,11 @@ void Write_Groups(double *fof)
     }  
 
     npar+=Temp.npgrup[i];
+=======
+    }  
+
+    npar+=j;
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
     gn++;
   }
 
@@ -442,8 +476,13 @@ void Write_Groups(double *fof)
 void Write_Sloan(double *fof)
 {
   int i;
+<<<<<<< HEAD
   char filename[200], filename_ascii[200];
   FILE *pfout, *pfout_ascii;
+=======
+  char filename[200];
+  FILE *pfout;
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
   int **npgrupo;
   struct galsloang galg;
 
@@ -458,6 +497,7 @@ void Write_Sloan(double *fof)
   }
 
   #ifdef LIM_VOL
+<<<<<<< HEAD
     sprintf(filename,"cat_%.2f_%.2f_%.2f.bin",zcut,fof[0],fof[1]);
     sprintf(filename_ascii,"cat_%.2f_%.2f_%.2f.dat",zcut,fof[0],fof[1]);
   #else
@@ -466,6 +506,13 @@ void Write_Sloan(double *fof)
   #endif
   pfout=fopen(filename,"w");
   pfout_ascii=fopen(filename_ascii,"w");
+=======
+    sprintf(filename,"cat_%.2f_%.2f_%.2f.dat",zcut,fof[0],fof[1]);
+  #else
+    sprintf(filename,"cat_%.2f_%.2f.dat",fof[0],fof[1]);
+  #endif
+  pfout=fopen(filename,"w");
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
 
   fwrite(&cp.npart,sizeof(int),1,pfout);
   for(i=0;i<cp.npart;i++)
@@ -478,6 +525,7 @@ void Write_Sloan(double *fof)
     galg.npgrupo[0] = npgrupo[P[i].sub][0];
     galg.npgrupo[1] = npgrupo[P[i].gr][1];
     fwrite(&galg,sizeof(struct galsloang),1,pfout);
+<<<<<<< HEAD
     
     fprintf(pfout_ascii,\
     "%ld %ld %ld \
@@ -512,12 +560,17 @@ void Write_Sloan(double *fof)
   fclose(pfout);
   fclose(pfout_ascii);
 
+=======
+  } 
+
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
   for(i=0;i<cp.npart;i++)
     free(npgrupo[i]);
   free(npgrupo);
 
   return;
 }
+<<<<<<< HEAD
 
 double mediana(double *x, int n, int n2)
 {
@@ -548,3 +601,5 @@ int fsort(const void *a, const void *b)
 
   return 0;
 }
+=======
+>>>>>>> e7d6618c604010219135380dce24974e7baa4b1b
